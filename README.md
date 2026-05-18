@@ -34,9 +34,9 @@ python filter_motif.py -i input.fasta -o filtered_motif.fasta -m "G[A-Z]S[A-Z]G"
 
 Performs a statistical and physicochemical refinement to ensure candidates are viable for specific environmental applications (e.g., soil bioremediation).
 
-Length Filter: Analyzes sequence length distribution via the Shapiro-Wilk test. If normal, it selects sequences within ±1 standard deviation. If non-normal, it uses the 15th-85th percentiles to exclude truncated fragments or massive fusions.
+* **Length Filter:** Analyzes sequence length distribution via the Shapiro-Wilk test. If normal, it selects sequences within ±1 standard deviation. If non-normal, it uses the 15th-85th percentiles to exclude truncated fragments or massive fusions.
 
-pI Filter: Discards sequences with an Isoelectric Point above a defined threshold. This is particularly useful for avoiding enzymes that would immobilize by adsorbing to negatively charged clay particles in soil environments.
+* **pI Filter:** Discards sequences with an Isoelectric Point above a defined threshold. This is particularly useful for avoiding enzymes that would immobilize by adsorbing to negatively charged clay particles in soil environments.
 
 Outputs colorblind-friendly histograms and scatter plots for selection justification.
 
@@ -52,13 +52,13 @@ python filter_pI_length.py -i filtered_motif.fasta --save_fasta candidates_stats
 
 The core unified script of the SeqPCA-Lite pipeline. It executes the sequence-space calculation in a single run:
 
-One-Hot Encoding: Converts the alignment into a multi-dimensional binary matrix, without assuming any prior relationship between amino acids.
+* **One-Hot Encoding:** Converts the alignment into a multi-dimensional binary matrix, without assuming any prior relationship between amino acids.
 
-PCA Calculation: Calculates Principal Components and feature loadings.
+* **PCA Calculation:** Calculates Principal Components and feature loadings.
 
-K-Means Clustering: Groups sequences mathematically and identifies the centroid (canonical representative) of each cluster.
+* **K-Means Clustering:** Groups sequences mathematically and identifies the centroid (canonical representative) of each cluster.
 
-Signature Identification: Calculates which specific amino acid variations drive the formation of each super-cluster.
+* **Signature Identification:** Calculates which specific amino acid variations drive the formation of each super-cluster.
 
 Visualization: Outputs an interactive .html Plotly 2D scatter plot of the PC space.
 
@@ -78,6 +78,3 @@ pca_results_signatures.csv: The list of amino acid defining features (loadings x
 pca_results_centroids.fasta: The FASTA files containing only the canonical models.
 
 pca_results_plot.html: Interactive 2D scatter plot for visual inspection.
-
-
-Qualquer outra dúvida para estruturar o seu código no GitHub, é só avisar!
