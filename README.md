@@ -20,6 +20,7 @@ mamba activate seqpca-lite
 
 ## Available Scripts
 1. filter_motif.py
+
 Filters a combined FASTA file to retain only sequences containing a specific functional motif. By default, it searches for G[A-Z]S[A-Z]G, a classic nucleophilic elbow motif found in α/β-hydrolases.
 
 Usage:
@@ -30,6 +31,7 @@ python filter_motif.py -i input.fasta -o filtered_motif.fasta -m "G[A-Z]S[A-Z]G"
 ```
 
 2. filter_pI_length.py
+
 Performs a statistical and physicochemical refinement to ensure candidates are viable for specific environmental applications (e.g., soil bioremediation).
 
 Length Filter: Analyzes sequence length distribution via the Shapiro-Wilk test. If normal, it selects sequences within ±1 standard deviation. If non-normal, it uses the 15th-85th percentiles to exclude truncated fragments or massive fusions.
@@ -47,6 +49,7 @@ python filter_pI_length.py -i filtered_motif.fasta --save_fasta candidates_stats
 ```
 
 3. pca_clustering_pipeline.py
+
 The core unified script of the SeqPCA-Lite pipeline. It executes the sequence-space calculation in a single run:
 
 One-Hot Encoding: Converts the alignment into a multi-dimensional binary matrix, without assuming any prior relationship between amino acids.
